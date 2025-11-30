@@ -25,7 +25,7 @@ The **Payrexx Tap to Pay SDK** allows Android developers to integrate contactles
 
 Before integrating the SDK, ensure your development environment meets the following criteria:
 
-* **Android SDK:** Minimum API Level 24 (Android 7.0) or higher.
+* **Android SDK:** Minimum API Level 26 (Android 8.0) or higher.
 * **Hardware:** An Android device with **NFC** capabilities.
 * **External Dependency:** The device **must** have the **Payrexx Tap to Pay App** installed (Package: `com.payrexx.taptopay.SOFTPOS`). This SDK relies on it to process the raw NFC data securely.
 
@@ -38,7 +38,7 @@ Add the SDK library to your project.
 ```gradle
 // build.gradle (app module)
 dependencies {
-    implementation 'io.github.payrexx:taptopay-sdk:1.0.0'
+    implementation("io.github.payrexx:taptopay-sdk:1.0.0")
 }
 ```
 
@@ -369,7 +369,7 @@ When a transaction fails, check the `responseCode` inside the `Transaction` obje
 
 To see a complete implementation of this SDK in a working Android application, please refer to our sample project:
 
-[**View Sample Project**](https://github.com/payrexx/PayrexxTapToPayECRDemo)
+[**View Sample Project**](https://github.com/payrexx/TapToPayECRDemo)
 
 The sample project demonstrates:
 1.  SDK Initialization.
