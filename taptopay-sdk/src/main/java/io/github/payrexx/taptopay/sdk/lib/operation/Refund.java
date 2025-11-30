@@ -1,0 +1,42 @@
+package io.github.payrexx.taptopay.sdk.lib.operation;
+
+import android.content.Intent;
+
+import io.github.payrexx.taptopay.sdk.dto.RefundDto;
+import io.github.payrexx.taptopay.sdk.lib.helper.TapToPayFragment;
+import io.github.payrexx.taptopay.sdk.lib.helper.TapToPayResultListener;
+import io.github.payrexx.taptopay.sdk.model.EmptyResponse;
+import io.github.payrexx.taptopay.sdk.model.Response;
+
+/**
+ * Represents a refund operation.
+ */
+public class Refund extends Operation {
+    /**
+     * Constructs a new Refund operation.
+     *
+     * @param refundDto The data for the refund.
+     */
+    public Refund(RefundDto refundDto) {
+        super(refundDto);
+    }
+
+    @Override
+    public void startOperation(TapToPayFragment taptopayFragment, TapToPayResultListener resultListener) {
+        Intent intent = new Intent("com.payrexx.taptopay.SOFTPOS");
+        intent.putExtra(
+            "com.payrexx.taptopay.CONFIGURATION",
+            this.getRequestData("refund").toString()
+        );
+
+        taptopayFragment.launch(intent, result -> {
+            Response response;
+            if (result == null) {
+                response = new EmptyResponse();
+            } else {
+                response = this.parseResponseData(result);
+            }
+            resultListener.onTapToPayResultCallback(response);
+        });
+    }
+}

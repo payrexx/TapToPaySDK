@@ -38,7 +38,7 @@ Add the SDK library to your project.
 ```gradle
 // build.gradle (app module)
 dependencies {
-    implementation 'io.github.payrexx-taptopay-sdk:1.0.0'
+    implementation 'io.github.payrexx:taptopay-sdk:1.0.0'
 }
 ```
 

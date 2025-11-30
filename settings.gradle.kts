@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "payrexx-tap-to-pay-sdk"
-include("lib")
+include("taptopay-sdk")
