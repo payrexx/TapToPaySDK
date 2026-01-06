@@ -1,6 +1,8 @@
+import com.vanniktech.maven.publish.DeploymentValidation
+
 plugins {
     alias(libs.plugins.android.library)
-    id("com.vanniktech.maven.publish") version "0.35.0"
+    id("com.vanniktech.maven.publish") version "0.36.0"
 }
 
 group = "io.github.payrexx"
@@ -44,7 +46,7 @@ dependencies {
 }
 
 mavenPublishing {
-    publishToMavenCentral(validateDeployment = false)
+    publishToMavenCentral(validateDeployment = DeploymentValidation.NONE)
     signAllPublications()
 
     configure(com.vanniktech.maven.publish.AndroidSingleVariantLibrary(

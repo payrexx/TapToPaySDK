@@ -9,11 +9,12 @@ public enum PaymentMethod {
     /**
      * Payment by card.
      */
-    @SerializedName("1")
+    @SerializedName(value = "CONTACTLESS", alternate = {"1"})
     CARD,
+
     /**
      * Payment with Twint.
      */
-    @SerializedName("11")
+    @SerializedName(value = "TWINT", alternate = {"11"})
     TWINT
 }

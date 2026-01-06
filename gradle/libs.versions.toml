@@ -2,9 +2,9 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-agp = "8.13.1"
+agp = "8.13.2"
 gson = "2.13.2"
-activity = "1.12.0"
+activity = "1.12.2"
 fragment = "1.8.9"
 
 [libraries]
