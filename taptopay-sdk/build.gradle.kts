@@ -55,7 +55,7 @@ mavenPublishing {
         publishJavadocJar = false
     ))
 
-    coordinates(group.toString(), name.toString(), version.toString())
+    coordinates(group.toString(), name, version.toString())
 
     pom {
         name.set("Payrexx Tap To Pay SDK")
