@@ -1,4 +1,7 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.DeploymentValidation
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
 
 plugins {
     alias(libs.plugins.android.library)
@@ -49,11 +52,13 @@ mavenPublishing {
     publishToMavenCentral(validateDeployment = DeploymentValidation.NONE)
     signAllPublications()
 
-    configure(com.vanniktech.maven.publish.AndroidSingleVariantLibrary(
-        variant = "release",
-        sourcesJar = true,
-        publishJavadocJar = false
-    ))
+    configure(
+        AndroidSingleVariantLibrary(
+            variant = "release",
+            sourcesJar = SourcesJar.Sources(),
+            javadocJar = JavadocJar.None()
+        )
+    )
 
     coordinates(group.toString(), name, version.toString())
 
