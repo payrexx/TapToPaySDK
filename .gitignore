@@ -1,6 +1,14 @@
 # Ignore Gradle project-specific cache directory
 .gradle
 
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/deviceManager.xml
+/.idea/.name
+/.idea/assetWizardSettings.xml
 # Ignore Gradle build output directory
 build
 

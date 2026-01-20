@@ -1,10 +1,15 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+import com.vanniktech.maven.publish.DeploymentValidation
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
+
 plugins {
     alias(libs.plugins.android.library)
-    id("com.vanniktech.maven.publish") version "0.35.0"
+    id("com.vanniktech.maven.publish") version "0.36.0"
 }
 
 group = "io.github.payrexx"
-version = "1.0.0"
+version = "1.0.1"
 
 
 android {
@@ -44,16 +49,18 @@ dependencies {
 }
 
 mavenPublishing {
-    publishToMavenCentral(validateDeployment = false)
+    publishToMavenCentral(validateDeployment = DeploymentValidation.NONE)
     signAllPublications()
 
-    configure(com.vanniktech.maven.publish.AndroidSingleVariantLibrary(
-        variant = "release",
-        sourcesJar = true,
-        publishJavadocJar = false
-    ))
+    configure(
+        AndroidSingleVariantLibrary(
+            variant = "release",
+            sourcesJar = SourcesJar.Sources(),
+            javadocJar = JavadocJar.None()
+        )
+    )
 
-    coordinates(group.toString(), name.toString(), version.toString())
+    coordinates(group.toString(), name, version.toString())
 
     pom {
         name.set("Payrexx Tap To Pay SDK")

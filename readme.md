@@ -38,7 +38,7 @@ Add the SDK library to your project.
 ```gradle
 // build.gradle (app module)
 dependencies {
-    implementation("io.github.payrexx:taptopay-sdk:1.0.0")
+    implementation("io.github.payrexx:taptopay-sdk:1.0.1")
 }
 ```
 
@@ -80,21 +80,28 @@ All interactions with the **Payrexx Tap to Pay App** are defined as **Operations
 
 ### 4.1 Sale
 
-Initiate a standard purchase transaction.
+Initiate a standard purchase transaction. If the `paymentMethod` is not specified, the **Payrexx Tap to Pay App** will display a chooser for the user to select their preferred method.
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | `amount` | `float` | The transaction amount. |
 | `tip` | `float` | The tip amount (set to `0` if none). |
 | `orderReference` | `String` | Unique reference for your internal tracking. |
+| `paymentMethod` | `PaymentMethod` | *(Optional)* Pre-select a payment method (e.g., `CARD`, `TWINT`). If omitted, a chooser is shown in the app. |
 | `showResult` | `boolean` | *(Optional)* Whether the Tap to Pay app shows the result screen. |
 
 ```java
 import io.github.payrexx.taptopay.sdk.dto.SaleDto;
 import io.github.payrexx.taptopay.sdk.lib.operation.Sale;
+import io.github.payrexx.taptopay.sdk.model.transaction.PaymentMethod;
 
 // 1. Prepare Data
+// Option A: Without pre-selecting a payment method (shows chooser in app)
 SaleDto saleDto = new SaleDto(25.00f, 0.00f, "ORDER-1001");
+
+// Option B: With pre-selected payment method (e.g., skip the chooser)
+// SaleDto saleDto = new SaleDto(25.00f, 0.00f, PaymentMethod.CARD, "ORDER-1001");
+
 // Optional: saleDto.showResult = true;
 
 // 2. Create Operation
